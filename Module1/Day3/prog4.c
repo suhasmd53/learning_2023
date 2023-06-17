@@ -28,8 +28,8 @@ void smallestlargest(int n) {
         if (count == 1) {
             printf("Number %d is not valid\n", i + 1);
         } else {
-            printf("Smallest digit is %d\n", i + 1, smallest);
-            printf("Largest digit is %d\n", i + 1, largest);
+            printf("Smallest digit is %d\n",smallest);
+            printf("Largest digit is %d\n",largest);
         }
     }
 }
