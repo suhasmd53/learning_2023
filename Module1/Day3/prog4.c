@@ -1,46 +1,38 @@
 #include <stdio.h>
-#include<math.h>
-void smallestlargest(int n) {
-    for (int i = 0; i < n; i++) {
-        int num;
-        printf("Enter number %d: ", i + 1);
-        scanf("%d", &num);
+#include<stdlib.h>
+int largestnumber(int num) {
+    char num_str[5];
+    sprintf(num_str, "%d", num);  
+    int largest_num = 0;
 
-        int smallest = 9; 
-        int largest = 0; 
-        int count=0;
-        int temp = num;
+    for (int i = 0; i < 4; i++) {
+        char new_num_str[5];
+        int index = 0;
 
-        
-        while (temp > 0) {
-            int digit = temp % 10;
-
-            if (digit < smallest) {
-                smallest = digit;
+        for (int j = 0; j < 4; j++) {
+            if (j != i) {
+                new_num_str[index] = num_str[j];
+                index++;
             }
-            if (digit > largest) {
-                largest = digit;
-            }
-
-            temp /= 10;
         }
-        count=(num==0)?1:log10(num)+1; 
-        if (count == 1) {
-            printf("Number %d is not valid\n", i + 1);
-        } else {
-            printf("Smallest digit is %d\n",smallest);
-            printf("Largest digit is %d\n",largest);
+        new_num_str[index] = '\0';
+
+        int new_num = atoi(new_num_str); 
+
+        if (new_num > largest_num) {
+            largest_num = new_num;
         }
     }
+
+    return largest_num;
 }
 
 int main() {
-    int n;
-    printf("Enter the value of n: ");
-    scanf("%d", &n);
+    int num;
+    printf("Enter the number\n");
+    scanf("%d",&num);
+    printf("Largest number by deleting a single digit from %d: %d\n", num, largestnumber(num));
 
-    smallestlargest(n);
 
     return 0;
 }
-
